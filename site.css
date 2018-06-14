@@ -1,0 +1,75 @@
+
+.classButton{
+  border-radius: 39px; 
+  -moz-border-radius: 39px; 
+  -webkit-border-radius: 39px; 
+  border: 2px solid #000; 
+  font-size: 30px;
+  padding: 20px;
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+.actionButton{
+  border-radius: 39px; 
+  -moz-border-radius: 39px; 
+  -webkit-border-radius: 39px; 
+  border: 2px solid #000; 
+  font-size: 20px;
+  padding: 5px;
+  width: 200px;
+  margin-top: 10px;
+}
+
+
+table{
+  width: 100%;
+  height: 400px;
+  font-size: 20px;
+  font-style: bold;
+  border-spacing: 10px;
+  font-family: Arial;
+}
+
+td {
+  width:20%;
+  text-align: center;
+  vertical-align: middle; 
+}
+
+.card{
+  background-color: #fcfc88;  
+  border: 2px solid black;  
+  border-radius: 10px;
+  height: 100%
+}
+
+.card-text {
+  margin-top: 15px;
+}
+
+.master-revealed {
+  text-decoration: line-through;
+}
+
+h1{
+  color: #6dbcf2; 
+  font-family: Arial; 
+  font-size: 40px; 
+  font-weight: 400; 
+  line-height: 44px; 
+  margin: 0 0 12px; 
+  text-align: center;
+}
+
+h2 {
+  font-family: Arial; 
+  font-size: 20px; 
+  font-weight: 200; 
+  line-height: 44px; 
+  margin: 0 0 12px; 
+  text-align: center;
+}

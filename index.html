@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" ng-app="codenameApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Codenames</title>
+    <link rel="icon" href="https://s3-ap-southeast-2.amazonaws.com/codenames/favicon.ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="site.css">
+  </head>
+  <body ng-controller="GameController">
+
+    <h1 ng-hide="mastermind||spy">Welcome to Codenames!</h1>
+    <h2 ng-hide="mastermind||spy">This game works best on mobile and held <b>horizontally</b></h2>
+    <button class="classButton" ng-click="amMastermind()" ng-hide="mastermind||spy">Mastermind</button>
+    <button class="classButton" ng-click="amSpy()" ng-hide="mastermind||spy">Spy</button>
+  
+    <table ng-show="mastermind||spy">
+      
+      <tr ng-repeat="i in [0,1,2,3,4]">
+        <td ng-repeat="j in [0,1,2,3,4]">
+          <div 
+            class="card" 
+            ng-class="{'master-revealed': words[i * 5 + j].revealed && mastermind }"
+            ng-style="{'background-color': words[i * 5 + j].background, 'color': words[i * 5 + j].text}" 
+            ng-show="mastermind||words[i * 5 + j].revealed">
+              <div class="card-text">{{words[i * 5 + j].word}}</div>
+          </div>
+          <div 
+            class="card" 
+            ng-click="showWord(i * 5 + j)" 
+            ng-show="spy && !words[i * 5 + j].revealed">
+              <div class="card-text">{{words[i * 5 + j].word}}</div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <button class="actionButton" ng-show="mastermind" ng-click="newGame()">New Game</button>
+    <button class="actionButton" ng-show="spy" ng-click="refresh()">Refresh</button>
+  </body>
+</html>

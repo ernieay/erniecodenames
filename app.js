@@ -7,12 +7,23 @@ codenameApp.controller('GameController', function GameController($scope, $http, 
   $scope.mastermind = false;
   $scope.spy = false;
   
-  $scope.refresh = function(){
+  $scope.refresh = function(newGame){
 	  $http({
       method: 'GET',
       url: 'https://l7plker6t7.execute-api.ap-southeast-2.amazonaws.com/prod/getwords'
 	  }).then(function successCallback(response) {
-      $scope.words = response.data;
+      if (newGame || $scope.words.length === 0) {
+        $scope.words = response.data
+        return
+      }
+      let newWords = []
+      for (let i = 0; i < response.data.length; i++) {
+        if (!response.data[i].revealed && $scope.words[i].revealed) {
+          response.data[i].revealed = true
+        }
+        newWords.push(response.data[i])
+      }
+      $scope.words = newWords
 	  }, function errorCallback(response) {
       // called asynchronously if an error occurs
       // or server returns response with an error status.
@@ -24,7 +35,7 @@ codenameApp.controller('GameController', function GameController($scope, $http, 
       method: 'GET',
       url: 'https://l7plker6t7.execute-api.ap-southeast-2.amazonaws.com/prod/newgame'
 	  }).then(function successCallback(response) {
-      $scope.refresh();
+      $scope.refresh(true);
 	  }, function errorCallback(response) {
       // called asynchronously if an error occurs
       // or server returns response with an error status.
